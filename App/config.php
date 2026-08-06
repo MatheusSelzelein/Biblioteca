@@ -10,7 +10,8 @@ define('BASE_DIR', dirname(__FILE__, 2));
 define('VIEWS', BASE_DIR . '/View');
 
 //o $_env serve como array para armazenar os dados de conexao com o banco
-$_ENV['db']['host'] = "localhost:3307";
+$_ENV['db']['host'] = "localhost";
+$_ENV['db']['port'] = "3307";
 $_ENV['db']['user'] = "root";
 $_ENV['db']['pass'] = "Math@2026";
 $_ENV['db']['database'] = "biblioteca";
