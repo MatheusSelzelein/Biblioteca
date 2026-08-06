@@ -20,13 +20,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema crudmvc
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `biblioteca` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
-USE `biblioteca` ;
+CREATE SCHEMA IF NOT EXISTS `crudmvc` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `crudmvc` ;
 
 -- -----------------------------------------------------
 -- Table `crudmvc`.`aluno`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `biblioteca`.`aluno` (
+CREATE TABLE IF NOT EXISTS `crudmvc`.`aluno` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(100) NOT NULL,
   `ra` INT NULL DEFAULT NULL,
@@ -41,7 +41,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `crudmvc`.`autor`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `biblioteca`.`autor` (
+CREATE TABLE IF NOT EXISTS `crudmvc`.`autor` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Nome` VARCHAR(100) NOT NULL,
   `CPF` CHAR(11) NULL DEFAULT NULL,
@@ -56,7 +56,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `crudmvc`.`categoria`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `biblioteca`.`categoria` (
+CREATE TABLE IF NOT EXISTS `crudmvc`.`categoria` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Descricao` VARCHAR(100) NULL DEFAULT NULL,
   PRIMARY KEY (`Id`))
@@ -68,7 +68,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `crudmvc`.`livro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `biblioteca`.`livro` (
+CREATE TABLE IF NOT EXISTS `crudmvc`.`livro` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `Titulo` VARCHAR(200) NOT NULL,
   `Editora` VARCHAR(150) NOT NULL,
@@ -80,27 +80,27 @@ CREATE TABLE IF NOT EXISTS `biblioteca`.`livro` (
   INDEX `Categoria_Id` (`Categoria_Id` ASC) VISIBLE,
   CONSTRAINT `livro_ibfk_1`
     FOREIGN KEY (`Categoria_Id`)
-    REFERENCES `biblioteca`.`categoria` (`Id`))
+    REFERENCES `crudmvc`.`categoria` (`Id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `biblioteca`.`autor_livro`
+-- Table `crudmvc`.`autor_livro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `biblioteca`.`autor_livro` (
+CREATE TABLE IF NOT EXISTS `crudmvc`.`autor_livro` (
   `Autor_Id` INT NOT NULL,
   `Livro_Id` INT NOT NULL,
   PRIMARY KEY (`Autor_Id`, `Livro_Id`),
   INDEX `Livro_Id` (`Livro_Id` ASC) VISIBLE,
   CONSTRAINT `autor_livro_ibfk_1`
     FOREIGN KEY (`Autor_Id`)
-    REFERENCES `biblioteca`.`autor` (`Id`)
+    REFERENCES `crudmvc`.`autor` (`Id`)
     ON DELETE CASCADE,
   CONSTRAINT `autor_livro_ibfk_2`
     FOREIGN KEY (`Livro_Id`)
-    REFERENCES `biblioteca`.`livro` (`Id`)
+    REFERENCES `crudmvc`.`livro` (`Id`)
     ON DELETE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -108,9 +108,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `biblioteca`.`usuario`
+-- Table `crudmvc`.`usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `biblioteca`.`usuario` (
+CREATE TABLE IF NOT EXISTS `crudmvc`.`usuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(150) NOT NULL,
   `email` VARCHAR(150) NULL DEFAULT NULL,
@@ -125,7 +125,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 -- Table `crudmvc`.`emprestimo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `biblioteca`.`emprestimo` (
+CREATE TABLE IF NOT EXISTS `crudmvc`.`emprestimo` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `data_emprestimo` DATE NOT NULL,
   `data_devolucao` DATE NULL DEFAULT NULL,
@@ -138,13 +138,13 @@ CREATE TABLE IF NOT EXISTS `biblioteca`.`emprestimo` (
   INDEX `aluno_id` (`aluno_id` ASC) VISIBLE,
   CONSTRAINT `emprestimo_ibfk_1`
     FOREIGN KEY (`livro_id`)
-    REFERENCES `biblioteca`.`livro` (`Id`),
+    REFERENCES `crudmvc`.`livro` (`Id`),
   CONSTRAINT `emprestimo_ibfk_2`
     FOREIGN KEY (`usuario_id`)
-    REFERENCES `biblioteca`.`usuario` (`id`),
+    REFERENCES `crudmvc`.`usuario` (`id`),
   CONSTRAINT `emprestimo_ibfk_3`
     FOREIGN KEY (`aluno_id`)
-    REFERENCES `biblioteca`.`aluno` (`id`))
+    REFERENCES `crudmvc`.`aluno` (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;

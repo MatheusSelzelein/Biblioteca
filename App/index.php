@@ -1,3 +1,10 @@
 <?php
-    echo "Biblioteca CRUD MVC";
+
+    // faz o include dos arquivos
+    include "config.php";
+    include "autoload.php";
+    include "routes.php";
+    
+    
+
 ?>
