@@ -6,7 +6,7 @@ use PDO;
 
 abstract class DAO extends PDO
 {
-    protected static ?PDO $conexao = null;
+    protected static $conexao = null;
 
     public function __construct()
     {
