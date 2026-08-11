@@ -1,3 +1,1 @@
-use biblioteca;
-SHOW TABLES;
-SELECT *FROM aluno;
+SHOW biblioteca.usuario;
