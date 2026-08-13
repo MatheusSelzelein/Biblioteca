@@ -3,7 +3,8 @@
 use App\Controller\{
     AlunoController,
     InicialController,
-    LoginController
+    LoginController,
+    AutorController
 };
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -22,7 +23,7 @@ switch($url)
         LoginController::logout();
 
     case '/aluno' :
-        AlunoController::listar();
+        AlunoController::index();
     break;
 
     case '/aluno/cadastro' :
@@ -31,5 +32,17 @@ switch($url)
 
     case '/aluno/delete' :
         AlunoController::delete();
+    break;
+
+    case '/autor' :
+        AutorController::index();
+    break;
+
+    case '/autor/cadastro' :
+        AutorController::cadastro();
+    break;
+
+    case '/autor/delete' :
+        AutorController::delete();
     break;
 }

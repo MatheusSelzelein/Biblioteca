@@ -10,7 +10,7 @@
         <a class="nav-link" href="/emprestimo">Empréstimos</a>
         <a class="nav-link" href="/livro">Livros</a>
         <a class="nav-link" href="/categoria">Categorias</a>
-        <a class="nav-link" href="/autor">Autores</a>
+        <a class="nav-link" href="/autor">Autor</a>
         <a class="nav-link" href="/logout">Sair</a>
       </div>
     </div>

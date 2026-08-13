@@ -8,7 +8,7 @@ final class LoginController
 {
     public static function index() : void
     {
-        $erro = "";
+        $erro = " ";
 
         $model = new Login();
 
@@ -34,13 +34,15 @@ final class LoginController
                header("Location: /");
 
             } else 
+            {    
                 $erro = "Email ou senha incorretos!";
+            }
             
         }
 
-        if(isset($_COOKIE['sistema_biblioteca_usuario']))
+        /*if(isset($_COOKIE['sistema_biblioteca_usuario']))
             $model->Email = $_COOKIE['sistema_biblioteca_usuario'];
-        
+        */
         include VIEWS . '/login/form_login.php';
            
     }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistemas Biblioteca - Cadastro de Aluno</title>
+    <title>Sistemas Biblioteca - Cadastro de Autores</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
@@ -17,11 +17,11 @@
     </div>
 
 
-    <h1> Cadastro de Aluno </h1>
+    <h1> Cadastro de Autores </h1>
 
     <?= $model->getErrors() ?>
 
-    <form method="post" action="/aluno/cadastro" class="p-5">
+    <form method="post" action="/autor/cadastro" class="p-5">
 
         <input name="id" type="hidden" value="<?= $model->Id ?>" />
 
@@ -30,12 +30,12 @@
             <input type="text" value="<?= $model->Nome ?>" class="form-control" name="nome" id="nome">
         </div>
         <div class="mb-3">
-            <label for="ra" class="form-label">RA: </label>
-            <input type="text" value="<?= $model->Ra ?>" class="form-control" name="ra" id="ra">
+            <label for="cpf" class="form-label">CPF: </label>
+            <input type="text" value="<?= $model->CPF ?>" class="form-control" name="cpf" id="cpf">
         </div>
         <div class="mb-3">
-            <label for="curso" class="form-label">Curso </label>
-            <input type="text" value="<?= $model->Curso ?>" class="form-control" name="curso" id="curso">
+            <label for="data_nascimento" class="form-label">Data de Nascimento: </label>
+            <input type="date" value="<?= $model->Data_Nascimento ?>" class="form-control" name="data_nascimento" id="data_nascimento">
         </div>
 
 
