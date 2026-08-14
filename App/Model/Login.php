@@ -6,7 +6,7 @@ use App\DAO\LoginDAO;
 
 final class Login
 {
-    public $Email, $Senha;
+    public $Email, $Senha, $Nome, $Id;
 
     public function logar() : ?Login
     {

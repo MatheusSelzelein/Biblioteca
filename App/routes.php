@@ -6,7 +6,8 @@ use App\Controller\{
     LoginController,
     AutorController,
     CategoriaController,
-    LivroController
+    LivroController,
+    EmprestimoController
 };
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -70,6 +71,18 @@ switch($url)
 
     case '/livro/delete' :
         LivroController::delete();
+    break;
+
+    case '/emprestimo' :
+        EmprestimoController::index();
+    break;
+
+    case '/emprestimo/cadastro' :
+        EmprestimoController::cadastro();
+    break;
+
+    case '/emprestimo/delete' :
+        EmprestimoController::delete();
     break;
 
 }

@@ -40,9 +40,9 @@ final class LoginController
             
         }
 
-        /*if(isset($_COOKIE['sistema_biblioteca_usuario']))
+        if(isset($_COOKIE['sistema_biblioteca_usuario']))
             $model->Email = $_COOKIE['sistema_biblioteca_usuario'];
-        */
+        
         include VIEWS . '/login/form_login.php';
            
     }
@@ -51,6 +51,11 @@ final class LoginController
     {   
         session_destroy();
         header("Location: /login");
+    }
+
+    public static function getUsuario() 
+    {
+        return unserialize(serialize($_SESSION['usuario_logado']));
     }
 
 }
