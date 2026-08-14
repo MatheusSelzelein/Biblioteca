@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistemas Biblioteca - Lista de alunos</title>
+    <title>Sistemas Biblioteca - Lista de Categorias</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
@@ -16,9 +16,9 @@
     </div>
 
 
-    <h1> Lista de Aluno </h1>
+    <h1> Lista de Categorias </h1>
 
-    <a href="/aluno/cadastro"> Novo Aluno</a>
+    <a href="/categoria/cadastro"> Nova Categoria</a>
 
     <?= $model->getErrors() ?>
 
@@ -26,17 +26,15 @@
         <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Curso</th>
+                <th scope="col">Descrição</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach($model->rows as $aluno): ?> 
+            <?php foreach($model->rows as $categoria): ?> 
             <tr>
-                <td> <?= $aluno->Id ?> </td>
-                <td> <a href="/aluno/cadastro?id=<?= $aluno->Id ?>"><?= $aluno->Nome ?></a> </td>
-                <td> <?= $aluno->Curso ?> </td>
-                <td> <a href="/aluno/delete?id=<?= $aluno->Id ?>">Remover</a> </td>
+                <td> <?= $categoria->Id ?> </td>
+                <td> <a href="/categoria/cadastro?id=<?= $categoria->Id ?>"><?= $categoria->Descricao ?></a> </td>
+                <td> <a href="/categoria/delete?id=<?= $categoria->Id ?>">Remover</a> </td>
             </tr>
             <?php endforeach ?>
         </tbody>

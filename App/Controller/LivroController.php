@@ -2,16 +2,21 @@
 //encapsula o nome
 namespace App\Controller;
 
-use App\Model\Aluno;
+use App\Model\{
+    Livro,
+    Categoria,
+    Autor
+};
+
 use Exception;
 
-final class AlunoController extends Controller
+final class LivroController extends Controller
 {
     public static function index(): void
     {
         parent::isProtected();
 
-        $model = new Aluno();
+        $model = new Livro();
 
         try 
         {
@@ -20,11 +25,11 @@ final class AlunoController extends Controller
 
         } catch (Exception $e) {
 
-            $model->setError("Ocorreu um erro ao buscar os alunos: ");
+            $model->setError("Ocorreu um erro ao buscar os livros: ");
             $model->setError($e->getMessage());
         }
 
-        parent::render( '/Aluno/lista_aluno.php', $model);
+        parent::render( '/Livro/lista_livro.php', $model);
 
     }
 
@@ -32,26 +37,29 @@ final class AlunoController extends Controller
     {
         parent::isProtected();
 
-        $model = new Aluno();
+        $model = new Livro();
 
         try 
         {   
             if(parent::isPost())
             {
-            
                 $model->Id = !empty($_POST['id']) ? $_POST['id'] : null;
-                $model->Nome = $_POST['nome'];
-                $model->Ra = $_POST['ra'];
-                $model->Curso = $_POST['curso'];
+                $model->Titulo = $_POST['titulo'];
+                $model->Editora = $_POST['editora'];
+                $model->Ano = $_POST['ano'];
+                $model->Isbn = $_POST['isbn'];
+                $model->Categoria_Id = $_POST['categoria_id'];
+                $model->Autores_Id = $_POST['autores'] ?? [];
                 $model->save();
 
-                parent::redirect("/aluno");
+                parent::redirect("/livro");
 
             }  else {
 
                 if(isset($_GET['id']))
                 {              
                     $model = $model->getById( (int) $_GET['id'] );
+
                 }
             }
 
@@ -59,8 +67,12 @@ final class AlunoController extends Controller
         {
             $model->setError($e->getMessage());
         }
+
+        $model->rows_categorias = new Categoria()->getAllRows();
+
+        $model->rows_autores = new Autor()->getAllRows();
         
-        parent::render( '/Aluno/form_aluno.php', $model);
+        parent::render( '/Livro/form_livro.php', $model);
         
     }
 
@@ -68,19 +80,19 @@ final class AlunoController extends Controller
     {
         parent::isProtected();
 
-        $model = new Aluno();
+        $model = new Livro();
         try 
         {
             $model->delete( (int) $_GET['id'] );
-            parent::redirect("/aluno");
+            parent::redirect("/livro");
 
         } catch (Exception $e) {
 
-            $model->setError("Ocorreu um erro ao excluir o aluno: ");
+            $model->setError("Ocorreu um erro ao excluir o livro: ");
             $model->setError($e->getMessage());
         }
 
-        parent::render( '/Aluno/lista_aluno.php', $model);
+        parent::render( '/Livro/lista_livro.php', $model);
         
     }
 

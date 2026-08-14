@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sistemas Biblioteca - Lista de alunos</title>
+    <title>Sistemas Biblioteca - Lista de Livros</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
 
@@ -16,9 +16,9 @@
     </div>
 
 
-    <h1> Lista de Aluno </h1>
+    <h1> Lista de Livros </h1>
 
-    <a href="/aluno/cadastro"> Novo Aluno</a>
+    <a href="/livro/cadastro"> Novo Livro</a>
 
     <?= $model->getErrors() ?>
 
@@ -26,17 +26,21 @@
         <thead>
             <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Curso</th>
+                <th scope="col">Título</th>
+                <th scope="col">Editora</th>
+                <th scope="col">Ano</th>
+                <th scope="col">ISBN</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach($model->rows as $aluno): ?> 
+            <?php foreach($model->rows as $livro): ?> 
             <tr>
-                <td> <?= $aluno->Id ?> </td>
-                <td> <a href="/aluno/cadastro?id=<?= $aluno->Id ?>"><?= $aluno->Nome ?></a> </td>
-                <td> <?= $aluno->Curso ?> </td>
-                <td> <a href="/aluno/delete?id=<?= $aluno->Id ?>">Remover</a> </td>
+                <td> <?= $livro->Id ?> </td>
+                <td> <a href="/livro/cadastro?id=<?= $livro->Id ?>"><?= $livro->Titulo ?></a> </td>
+                <td> <?= $livro->Editora ?> </td>
+                <td> <?= $livro->Ano ?> </td>
+                <td> <?= $livro->Isbn ?> </td>
+                <td> <a href="/livro/delete?id=<?= $livro->Id ?>">Remover</a> </td>
             </tr>
             <?php endforeach ?>
         </tbody>

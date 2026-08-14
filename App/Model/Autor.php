@@ -4,6 +4,8 @@ namespace App\Model;
 
 use App\DAO\AutorDAO;
 
+use Exception;
+
 final class Autor extends Model
 {
     public ?int $Id = null;
@@ -13,7 +15,7 @@ final class Autor extends Model
         {
             if(strlen($value) < 3)
             {
-                throw new \Exception("O nome do autor deve ter no mínimo 3 caracteres.");
+                throw new Exception("O nome do autor deve ter no mínimo 3 caracteres.");
             }
             $this->Nome = $value;
         }
@@ -27,7 +29,7 @@ final class Autor extends Model
         {
             if(empty($value))
             {
-                throw new \Exception("Preencha o CPF do autor.");
+                throw new Exception("Preencha o CPF do autor.");
             }
             $this->CPF = $value;
         }
@@ -42,7 +44,7 @@ final class Autor extends Model
         
             if(empty($value))
             {
-                throw new \Exception("Preencha a data de nascimento do autor.");
+                throw new Exception("Preencha a data de nascimento do autor.");
             }
             $this->Data_Nascimento = $value;
         }

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\Autor;
+use Exception;
 
 final class AutorController extends Controller
 {
@@ -17,7 +18,7 @@ final class AutorController extends Controller
 
             $model->getAllRows();
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
 
             $model->setError("Ocorreu um erro ao buscar os autores: ");
             $model->setError($e->getMessage());
@@ -54,7 +55,7 @@ final class AutorController extends Controller
                 }
             }
 
-        } catch (\Exception $e) 
+        } catch (Exception $e) 
         {
             $model->setError($e->getMessage());
         }
@@ -73,7 +74,7 @@ final class AutorController extends Controller
             $model->delete( (int) $_GET['id'] );
             parent::redirect("/autor");
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
 
             $model->setError("Ocorreu um erro ao excluir o autor: ");
             $model->setError($e->getMessage());
