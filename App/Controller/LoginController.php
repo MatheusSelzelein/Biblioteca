@@ -40,8 +40,8 @@ final class LoginController
             
         }
 
-        if(isset($_COOKIE['sistema_biblioteca_usuario']))
-            $model->Email = $_COOKIE['sistema_biblioteca_usuario'];
+       // if(isset($_COOKIE['sistema_biblioteca_usuario']))
+           // $model->Email = $_COOKIE['sistema_biblioteca_usuario'];
         
         include VIEWS . '/login/form_login.php';
            

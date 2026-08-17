@@ -12,77 +12,109 @@ use App\Controller\{
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-switch($url)
-{
-    case '/' :
+switch ($url) {
+    case '/assets/css/library.css':
+    case '/assets/js/library.js':
+        $arquivo = BASE_DIR . '/App' . $url;
+        if (is_file($arquivo)) {
+            header('Content-Type: ' . (substr($url, -4) === '.css' ? 'text/css; charset=UTF-8' : 'application/javascript; charset=UTF-8'));
+            header('Cache-Control: public, max-age=3600');
+            readfile($arquivo);
+        } else {
+            http_response_code(404);
+        }
+        exit;
+
+    case '/assets/img/imagem-background.jfif':
+        $imagem = BASE_DIR . '/App/Assets/img/imagem-background.jfif';
+        if (is_file($imagem)) {
+            header('Content-Type: image/jpeg');
+            header('Cache-Control: public, max-age=86400');
+            readfile($imagem);
+        } else {
+            http_response_code(404);
+        }
+        exit;
+
+    case '/assets/img/icone-teste.png':
+        $arquivo = BASE_DIR . '/App/Assets/img/icone-teste.png';
+        if (is_file($arquivo)) {
+            header('Content-Type: image/png');
+            readfile($arquivo);
+        } else {
+            http_response_code(404);
+        }
+        exit;
+
+    case '/':
         InicialController::index();
-    break;
+        break;
 
     case '/login':
         LoginController::index();
-    break;
+        break;
 
     case '/logout':
         LoginController::logout();
 
-    case '/aluno' :
+    case '/aluno':
         AlunoController::index();
-    break;
+        break;
 
-    case '/aluno/cadastro' :
+    case '/aluno/cadastro':
         AlunoController::cadastro();
-    break;
+        break;
 
-    case '/aluno/delete' :
+    case '/aluno/delete':
         AlunoController::delete();
-    break;
+        break;
 
-    case '/autor' :
+    case '/autor':
         AutorController::index();
-    break;
+        break;
 
-    case '/autor/cadastro' :
+    case '/autor/cadastro':
         AutorController::cadastro();
-    break;
+        break;
 
-    case '/autor/delete' :
+    case '/autor/delete':
         AutorController::delete();
-    break;
+        break;
 
-    case '/categoria' :
+    case '/categoria':
         CategoriaController::index();
-    break;
+        break;
 
-    case '/categoria/cadastro' :
+    case '/categoria/cadastro':
         CategoriaController::cadastro();
-    break;
+        break;
 
-    case '/categoria/delete' :
+    case '/categoria/delete':
         CategoriaController::delete();
-    break;
+        break;
 
-    case '/livro' :
+    case '/livro':
         LivroController::index();
-    break;
+        break;
 
-    case '/livro/cadastro' :
+    case '/livro/cadastro':
         LivroController::cadastro();
-    break;
+        break;
 
-    case '/livro/delete' :
+    case '/livro/delete':
         LivroController::delete();
-    break;
+        break;
 
-    case '/emprestimo' :
+    case '/emprestimo':
         EmprestimoController::index();
-    break;
+        break;
 
-    case '/emprestimo/cadastro' :
+    case '/emprestimo/cadastro':
         EmprestimoController::cadastro();
-    break;
+        break;
 
-    case '/emprestimo/delete' :
+    case '/emprestimo/delete':
         EmprestimoController::delete();
-    break;
+        break;
 
 }
