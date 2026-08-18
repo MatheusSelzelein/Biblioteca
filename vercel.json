@@ -1,8 +1,0 @@
-{
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/App/index.php"
-        }
-    ]
-}
