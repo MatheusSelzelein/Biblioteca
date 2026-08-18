@@ -10,8 +10,8 @@ define('BASE_DIR', dirname(__FILE__, 2));
 define('VIEWS', BASE_DIR . '/App/View');
 
 //o $_env serve como array para armazenar os dados de conexao com o banco
-$_ENV['db']['host'] = "altaria.proxy.rlwy.net";
-$_ENV['db']['port'] = "59318";
-$_ENV['db']['user'] = "root";
-$_ENV['db']['pass'] = "DIkQRxUtJFIKyrFPGhAAsKxNQfSTqnJi";
-$_ENV['db']['database'] = "biblioteca";
+$_ENV['db']['host'] = getenv('DB_HOST');
+$_ENV['db']['port'] = getenv('DB_PORT');
+$_ENV['db']['user'] = getenv('DB_USER');
+$_ENV['db']['pass'] = getenv('DB_PASS');
+$_ENV['db']['database'] = getenv('DB_NAME');
