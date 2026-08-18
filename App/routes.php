@@ -13,8 +13,8 @@ use App\Controller\{
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch ($url) {
-    case '/assets/css/library.css':
-    case '/assets/js/library.js':
+    case '/Assets/css/library.css':
+    case '/Assets/js/library.js':
         $arquivo = BASE_DIR . '/App' . $url;
         if (is_file($arquivo)) {
             header('Content-Type: ' . (substr($url, -4) === '.css' ? 'text/css; charset=UTF-8' : 'application/javascript; charset=UTF-8'));
@@ -25,7 +25,7 @@ switch ($url) {
         }
         exit;
 
-    case '/assets/img/imagem-background.jfif':
+    case '/Assets/img/imagem-background.jfif':
         $imagem = BASE_DIR . '/App/Assets/img/imagem-background.jfif';
         if (is_file($imagem)) {
             header('Content-Type: image/jpeg');
@@ -36,7 +36,7 @@ switch ($url) {
         }
         exit;
 
-    case '/assets/img/icone-teste.png':
+    case '/Assets/img/icone-teste.png':
         $arquivo = BASE_DIR . '/App/Assets/img/icone-teste.png';
         if (is_file($arquivo)) {
             header('Content-Type: image/png');
