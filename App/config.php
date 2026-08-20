@@ -10,8 +10,8 @@ define('BASE_DIR', dirname(__FILE__, 2));
 define('VIEWS', BASE_DIR . '/App/View');
 
 //o $_env serve como array para armazenar os dados de conexao com o banco
-$_ENV['db']['host'] = "shortline.proxy.rlwy.net";
-$_ENV['db']['port'] = "36254";
-$_ENV['db']['user'] = "root";
-$_ENV['db']['pass'] = "fAquIfEnUVxWHbKiJxtfrvjhgPUbXZzk";
-$_ENV['db']['database'] = "biblioteca";
+$_ENV['db']['host'] = getenv('MYSQLHOST');
+$_ENV['db']['port'] = getenv('MYSQLPORT');
+$_ENV['db']['user'] = getenv('MYSQLUSER');
+$_ENV['db']['pass'] = getenv('MYSQLPASSWORD');
+$_ENV['db']['database'] = getenv('MYSQLDATABASE');
