@@ -36,10 +36,10 @@ switch ($url) {
         }
         exit;
 
-    case '/Assets/img/icone-teste.png':
-        $arquivo = BASE_DIR . '/App/Assets/img/icone-teste.png';
+    case '/Assets/img/icone-teste.PNG':
+        $arquivo = BASE_DIR . '/App/Assets/img/icone-teste.PNG';
         if (is_file($arquivo)) {
-            header('Content-Type: image/png');
+            header('Content-Type: image/PNG');
             readfile($arquivo);
         } else {
             http_response_code(404);

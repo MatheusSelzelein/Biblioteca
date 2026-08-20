@@ -1,0 +1,8 @@
+mysql://root:
+DIkQRxUtJFIKyrFPGhAAsKxNQfSTqnJi
+@
+altaria.proxy.rlwy.net
+:
+59318
+
+/biblioteca

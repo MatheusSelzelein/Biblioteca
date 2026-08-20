@@ -1,5 +1,5 @@
-<link href="/assets/css/library.css" rel="stylesheet">
-<script src="/assets/js/library.js" defer></script>
+<link href="/Assets/css/library.css" rel="stylesheet">
+<script src="/Assets/js/library.js" defer></script>
 
 <nav class="navbar navbar-expand-lg library-navbar" data-bs-theme="dark" aria-label="Navegação principal">
   <div class="container-fluid">
