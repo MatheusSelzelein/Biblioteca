@@ -10,7 +10,7 @@ COPY . /var/www/html
 # A aplicacao tem o front controller dentro de App/.
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/App
 
-RUN RUN apt-get update && apt-get install -y curl \
+RUN apt-get update && apt-get install -y curl \
     && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
     && apt-get install -y nodejs
 
