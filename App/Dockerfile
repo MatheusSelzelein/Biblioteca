@@ -10,13 +10,9 @@ COPY . /var/www/html
 # A aplicacao tem o front controller dentro de App/.
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/App
 
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
-        /etc/apache2/sites-available/*.conf \
-        /etc/apache2/apache2.conf \
-        /etc/apache2/conf-available/*.conf \
-    && printf '<Directory /var/www/html/App>\n    Options -Indexes +FollowSymLinks\n    AllowOverride All\n    Require all granted\n    FallbackResource /index.php\n</Directory>\n' \
-        > /etc/apache2/conf-available/biblioteca.conf \
-    && a2enconf biblioteca
+RUN RUN apt-get update && apt-get install -y curl \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs
 
 # Railway fornece PORT em runtime. O Apache precisa escutar exatamente nela.
 CMD ["sh", "-c", "npm run migrate && php -S 0.0.0.0:${PORT:-8080} -t App"]
