@@ -19,7 +19,4 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
     && a2enconf biblioteca
 
 # Railway fornece PORT em runtime. O Apache precisa escutar exatamente nela.
-CMD ["sh", "-c", "sed -ri \"s/^Listen .*/Listen ${PORT:-28996}/\"
-    /etc/apache2/ports.conf && sed -ri 
-    \"s/<VirtualHost \*:[0-9]+>/<VirtualHost *:${PORT:-28996}>/\" 
-    /etc/apache2/sites-available/000-default.conf && exec apache2-foreground"]
+CMD ["sh", "-c", "npm run migrate && php -S 0.0.0.0:${PORT:-8080} -t App"]
